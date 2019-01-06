@@ -1,0 +1,67 @@
+package pageObjects;
+
+import interfaces.AbstractPageUI;
+import interfaces.LoginPageUI;
+
+import org.openqa.selenium.WebDriver;
+
+import commons.AbstractPage;
+import commons.PageFactoryManager;
+
+public class LoginPageObject extends AbstractPage {
+	private WebDriver driver;
+
+	public LoginPageObject(WebDriver driverTestCase) {
+		this.driver = driverTestCase;
+	}
+
+	public String getLoginPageUrl() {
+		return getCurrentURL(driver);
+	}
+
+	public void inputToUserIDTextbox(String email) {
+		waitForControlVisible(driver, LoginPageUI.USER_ID);
+		sendkeyToElement(driver, LoginPageUI.USER_ID, email);
+	}
+
+	public void inputToPasswordTextbox(String password) {
+		waitForControlVisible(driver, LoginPageUI.PASSWORD);
+		sendkeyToElement(driver, LoginPageUI.PASSWORD, password);
+	}
+
+	public HomePageObject clickToLoginButton() {
+		waitForControlVisible(driver, AbstractPageUI.SUBMIT_BUTTON);
+
+		if (driver.toString().toLowerCase().contains("internetexplorer")) {
+			clickToElementByJS(driver, AbstractPageUI.SUBMIT_BUTTON);
+			staticSleep(5);
+		} else {
+			clickToElement(driver, AbstractPageUI.SUBMIT_BUTTON);
+		}
+
+		return PageFactoryManager.getHomePage(driver);
+	}
+
+	public RegisterPageObject clickToHereLink() {
+		waitForControlVisible(driver, LoginPageUI.HERE_LINK);
+
+		if (driver.toString().toLowerCase().contains("internetexplorer")) {
+			clickToElementByJS(driver, LoginPageUI.HERE_LINK);
+			staticSleep(5);
+		} else {
+			clickToElement(driver, LoginPageUI.HERE_LINK);
+		}
+
+		return PageFactoryManager.getResgisterPage(driver);
+	}
+
+	public boolean isLoginPageDisplayed() {
+		waitForControlVisible(driver, LoginPageUI.LOGIN_PAGE_FORM);
+		return isControlDisplayed(driver, LoginPageUI.LOGIN_PAGE_FORM);
+	}
+
+	public boolean isLoginPageNotDisplayed() {
+		waitForControlInvisible(driver, LoginPageUI.LOGIN_PAGE_FORM);
+		return isControlNotDisplayed(driver, LoginPageUI.LOGIN_PAGE_FORM);
+	}
+}
