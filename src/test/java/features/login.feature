@@ -1,10 +1,17 @@
 @login
 Feature: Login to System
 
-  @login_valid
-  Scenario: Login with data valid
-    Given I open to application
-    When I input to username textbox with data ""
-    And I input to password textbox with data ""
-    And I click to LOGIN button
-    Then Verify homepage displayed
+  Scenario: Register to aaplication
+    Given I get Login page URL
+    And I click the here link
+    And I put to Email textbox with data "autorandom"
+    And I click to Submit button at Register page
+    Then I get UserID info
+    And I get Passowrd info
+    When I open Login page again
+
+  Scenario: Login to application
+    Given I input to Username textbox
+    And I input to Password textbox
+    And I click to Login button at Login page
+    Then Verify Home page display with message "Welcome to Manager's Page of Guru99 Bank"
