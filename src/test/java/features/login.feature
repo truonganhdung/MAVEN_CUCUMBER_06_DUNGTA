@@ -1,7 +1,7 @@
 @login
 Feature: Login to System
 
-  Scenario: Register to aaplication
+  Scenario: Register to application
     Given I get Login page URL
     And I click the here link
     And I put to Email textbox with data "autorandom"
