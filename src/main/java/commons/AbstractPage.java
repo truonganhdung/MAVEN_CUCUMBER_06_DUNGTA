@@ -153,6 +153,12 @@ public class AbstractPage {
 		}
 	}
 
+	public void selectItemByVisibleText(WebDriver driver, String value, String xpathExpression, String... values) {
+		xpathExpression = String.format(xpathExpression, (Object[]) values);
+		Select select = new Select(driver.findElement(By.xpath(xpathExpression)));
+		select.selectByVisibleText(value);
+	}
+	
 	public void selectItemInHtmlDropdownByVisibleText(WebDriver driver, String xpathExpression, String value) {
 		Select select = new Select(driver.findElement(By.xpath(xpathExpression)));
 		select.selectByVisibleText(value);
