@@ -32,4 +32,19 @@ public class AbstractPageObject extends AbstractPage {
 		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_PAGE_LINK, pageName);
 		clickToElement(driver, AbstractPageUI.DYNAMIC_PAGE_LINK, pageName);
 	}
+	
+	public boolean verifyDynamicMessageDisplayed(String messageName) {
+		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_MESSAGE_CUCUMBER, messageName);
+		return isControlDisplayed(driver, AbstractPageUI.DYNAMIC_MESSAGE_CUCUMBER, messageName);
+	}
+	
+	public void clickToDynamicButton(String buttonID) {
+		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_BUTTON_CUCUMBER, buttonID);
+		clickToElement(driver, AbstractPageUI.DYNAMIC_BUTTON_CUCUMBER, buttonID);
+	}
+	
+	public String getDynamicDataDisplayedAtDynamicField(String fieldID) {
+		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_DATA_CUCUMBER, fieldID);
+		return getTextElement(driver, AbstractPageUI.DYNAMIC_DATA_CUCUMBER, fieldID);
+	}
 }

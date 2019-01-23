@@ -37,6 +37,8 @@ Feature: Common step for all features
     And Verify message "Customer Registered Successfully!!!" displayed success
     And Verify message "Customer details updated Successfully!!!" displayed success
     And Verify message "Account Generated Successfully!!!" displayed success
+    
+    And I verify expected data at "name" textbox with actual data "aaa"
     #--------------- WAIT ---------------
     And I sleep with 30" times
     And I sleep with 5" times

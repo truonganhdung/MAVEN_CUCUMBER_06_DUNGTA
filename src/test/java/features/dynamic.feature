@@ -13,18 +13,27 @@ Feature: DYNAMIC feature
 
   @new_customer
   Scenario Outline: Create new Customer
-    Given: I open "New Customer" page
-    When: I input to "name" textbox with data "<Name>"
-    And: I input to "dob" textbox with data "<DateOfBirth>"
-    And: I input to "addr" textbox with data "<Address>"
-    And: I input to "city" textbox with data "<City>"
-    And: I input to "state" textbox with data "<State>"
-    And: I input to "pinno" textbox with data "<Pin>"
-    And: I input to "telephoneno" textbox with data "<Phone>"
-    And: I open "Edit Customer" page
-    And: I open "Delete Customer" page
-    And: I open "Manager" page
-    And: I open "Deposit" page
+    Given I open "New Customer" page
+    When I input to "name" textbox with data "<Name>"
+    And I input to "dob" textbox with data "<DateOfBirth>"
+    And I input to "addr" textbox with data "<Address>"
+    And I input to "city" textbox with data "<City>"
+    And I input to "state" textbox with data "<State>"
+    And I input to "pinno" textbox with data "<Pin>"
+    And I input to "telephoneno" textbox with data "<Phone>"
+    And I input to "emailid" textbox with data "2" data "<Email>"
+    And I input to "password" textbox with data "<Password>"
+    And I click to "Submit" button
+    And Verify message "<Message>" displayed success
+    And I verify expected data at "Customer Name" textbox with actual data "<Name>"
+    And I verify expected data at "Address" textbox with actual data "<Address>"
+    And I verify expected data at "City" textbox with actual data "<City>"
+    And I verify expected data at "State" textbox with actual data "<State>"
+    And I verify expected data at "Pin" textbox with actual data "<Pin>"
+    And I open "Edit Customer" page
+    And I open "Delete Customer" page
+    And I open "Manager" page
+    And I open "Deposit" page
     
 
 

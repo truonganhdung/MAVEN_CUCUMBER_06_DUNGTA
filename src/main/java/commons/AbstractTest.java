@@ -1,6 +1,6 @@
 package commons;
 
-import java.util.Random;
+import java.util.Date;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -15,8 +15,7 @@ public class AbstractTest extends AbstractPage {
 	}
 
 	public static int randomNumber() {
-		Random rand = new Random();
-		int random = rand.nextInt(99999) + 1;
+		int random = new Date().getSeconds();
 		return random;
 	}
 
